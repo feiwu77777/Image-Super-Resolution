@@ -3,7 +3,7 @@ numpy
 h5py
 pillow
 flask_uploads
-Flask==0.12
+Flask==1.0
 protobuf==3.2.0
 torch
 torchvision

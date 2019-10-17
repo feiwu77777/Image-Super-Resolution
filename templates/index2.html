@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VGG16 Image Classification</title>
+	  <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+
+  <h1><span>Image enhancement</span></h1>
+  <img src="{{uploaded_path}}", STYLE="TOP:630px; LEFT:160px; WIDTH:1080px; HEIGHT:1080px"/>
+
+  <img src="{{computed_path}}", STYLE="TOP:160px; LEFT:87px; WIDTH:1080px; HEIGHT:1080px"/>
+  <a href="{{computed_path}}", download>Download</a>
+
+  <!-- <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    
+    
+    <a href="computed.jpg" download>Download link</a>  -->
+
+    <!-- <div id=d, style ="margin-top:55px;">
+      <h2> <span> Want to Try Again ?? <span></h2>
+    </div>
+    <div style ="margin-top:15px;">
+      <p><h4><span style="color:black"> Upload your image below </span></h4></p>
+    </div>
+    <div id = a , style="margin-top:25px;">
+			<input type=file name = photo accept="image/*" onchange="loadFile(event)">
+			<center> <img id="output" align = middle STYLE="TOP:160px; LEFT:87px; WIDTH:325px; HEIGHT:325px"/> </center>
+      <script>
+        var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        };
+      </script>
+		</div> -->
+<!-- 
+    <div id = b , style="margin-top:20px;">
+			<input type="submit">
+		</div>
+  </form> -->
+  
+</body>
+</html>

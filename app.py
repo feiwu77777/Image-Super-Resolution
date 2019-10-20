@@ -17,54 +17,35 @@ from fastai.vision import *
 from fastai.callbacks import *
 from fastai.utils.mem import *
 
+import asyncio, aiohttp
+
 app = Flask(__name__)
 
-path = untar_data(URLs.PETS)
-path_hr = path/'images'
-path_lr = path/'small-96'
-path_mr = path/'small-256'
-il = ImageList.from_folder(path_hr)
 
-arch = models.resnet34
-size=( 820, 1024)
+path = Path(__file__).parent #app/
 
-data = (ImageImageList.from_folder(path_mr).split_by_rand_pct(0.1, seed=42)
-          .label_from_func(lambda x: path_hr/x.name)
-          .transform(get_transforms(), size=size, tfm_y=True)
-          .databunch(bs=1).normalize(imagenet_stats, do_y=True))
-data.c = 3
+export_file_url = 'https://www.dropbox.com/s/gkjx36g2sbd0x6v/export.pkl?raw=1'
+export_file_name = 'export.pkl'
 
-def load(self, file:PathLikeOrBinaryStream=None, device:torch.device=None, strict:bool=True,
-            with_opt:bool=None, purge:bool=False, remove_module:bool=False):
-    "Load model and optimizer state (if `with_opt`) `file` from `self.model_dir` using `device`. `file` can be file-like (file or buffer)"
-    if purge: self.purge(clear_opt=ifnone(with_opt, False))
-    if device is None: device = self.data.device
-    elif isinstance(device, int): device = torch.device('cuda', device)
-    #source = self.path/self.model_dir/f'{file}.pth' if is_pathlike(file) else file
-    source = file
-    state = torch.load(source, map_location=device)
-    if set(state.keys()) == {'model', 'opt'}:
-        model_state = state['model']
-        if remove_module: model_state = remove_module_load(model_state)
-        get_model(self.model).load_state_dict(model_state, strict=strict)
-        if ifnone(with_opt,True):
-            if not hasattr(self, 'opt'): self.create_opt(defaults.lr, self.wd)
-            try:    self.opt.load_state_dict(state['opt'])
-            except: pass
-    else:
-        if with_opt: warn("Saved filed doesn't contain an optimizer state.")
-        if remove_module: state = remove_module_load(state)
-        get_model(self.model).load_state_dict(state, strict=strict)
-    del state
-    gc.collect()
-    return self
 
-Learner.load = load
+async def download_file(url, dest):
+    if dest.exists(): return
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            data = await response.read()
+            with open(dest, 'wb') as f: f.write(data)
 
-learn = unet_learner(data, arch, loss_func=F.l1_loss, 
-        blur=True, norm_type=NormType.Weight)
 
-learn.load('models/2b.pth')
+async def setup_learner():
+    await download_file(export_file_url, path/'models'/export_file_name)
+    defaults.device = torch.device('cpu')
+    learn = load_learner(path/'models', export_file_name)
+    return learn
+
+loop = asyncio.get_event_loop()
+tasks = [asyncio.ensure_future(setup_learner())]
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+loop.close()
 
 def api(full_path):
     img = open_image(full_path)

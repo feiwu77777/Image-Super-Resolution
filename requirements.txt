@@ -1,4 +1,6 @@
 gevent
+aiohttp
+asyncio
 numpy
 h5py
 pillow

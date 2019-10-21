@@ -11,6 +11,7 @@ import sys
 #for reading operating system data
 import os
 #initalize our flask app
+import uvicorn
 
 import fastai
 from fastai.vision import *
@@ -73,4 +74,5 @@ def upload():
     return render_template("index2.html", uploaded_path = saved_path, computed_path = saved_name)
 
 if __name__ == "__main__":
-	app.run()
+    if 'serve' in sys.argv:
+        uvicorn.run(app=app, host='0.0.0.0', port=5000, log_level="info")

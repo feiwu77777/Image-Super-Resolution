@@ -21,7 +21,6 @@ import asyncio, aiohttp
 
 app = Flask(__name__)
 
-
 path = Path(__file__).parent #app/
 
 export_file_url = 'https://www.dropbox.com/s/gkjx36g2sbd0x6v/export.pkl?raw=1'

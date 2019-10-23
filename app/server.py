@@ -58,10 +58,10 @@ async def upload(request):
     uploaded_name = 'app/static/user_imgs/uploaded/test.jpg'
     img.save(uploaded_name)
 
-    p, _, _ = learn.predict(img)
+    img, _, _ = learn.predict(img)
 
     computed_name = 'app/static/user_imgs/computed/test.jpg'
-    p.save(computed_name)
+    img.save(computed_name)
     return templates.TemplateResponse('index2.html', 
             {'request': request, 
              'uploaded_path': uploaded_name[4:], 

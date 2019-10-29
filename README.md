@@ -16,7 +16,7 @@
 ![after1](images/after1.png)
 - Before
 ![before2](images/before2.png)
-- Before
+- After
 ![after2](images/after2.png)
 
 

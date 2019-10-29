@@ -58,7 +58,7 @@ async def upload(request):
     uploaded_name = 'app/static/user_imgs/uploaded/test.jpg'
     img.save(uploaded_name)
 
-    size = 400
+    size = 512
     data_bunch = (ImageImageList.from_folder(path).split_none().label_from_func(lambda x: x)
           .transform(get_transforms(do_flip=False), size=size, tfm_y=True)
           .databunch(bs=1, no_check=True).normalize(imagenet_stats, do_y=True))

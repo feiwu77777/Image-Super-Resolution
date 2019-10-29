@@ -12,7 +12,8 @@
 	<h1><span>Super resolution with Resnet Model</span></h1>
 	<form method=POST enctype=multipart/form-data action="/upload">
 		<div style ="margin-top:15px;">
-		    <p><h4><span style="color:black"> Upload your image below </span></h4></p>
+			<p><h4><span style="color:black"> Upload your image below </span></h4></p>
+			<p><span style="color:black"> Please note that due to server memory limit, the use of image with a bigger resolution than 400x400 could crash the server</span></p>
 		</div>
     	<div id = a , style="margin-top:45px;">
 			<input type=file name = 'photo' accept="image/*" onchange="loadFile(event)">

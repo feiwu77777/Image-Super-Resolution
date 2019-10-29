@@ -8,14 +8,15 @@
 - The web structure is build using this [repository](https://github.com/feiwu77777/fastai-v3) of anurag
 - The HTML templates are taken from this [work](https://github.com/anagar20/Resnet-Image-Classification-Flask-App) of anagar20
 
-## Example
--Before
+## Demonstration
+- The application deployed at [https://image-enhance-yqa7.onrender.com](https://image-enhance-yqa7.onrender.com)
+- Before
 ![before1](images/before1.png)
--After
+- After
 ![after1](images/after1.png)
--Before
+- Before
 ![before2](images/before2.png)
--Before
+- Before
 ![after2](images/after2.png)
 
 
@@ -26,8 +27,3 @@
 - cd to its location.
 - run "pip install -r requirements". 
 - then "python app/server.py serve" to launch the application.
-
-
-[link to paper](https://arxiv.org/abs/1612.04402)
-
-![outi](https://user-images.githubusercontent.com/34350063/49852875-4ed83180-fe20-11e8-83d0-792d275331e1.jpg)

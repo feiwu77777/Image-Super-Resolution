@@ -1,6 +1,6 @@
-#Increasing Image Resolution
+# Increasing Image Resolution
 
-##Overview 
+## Overview 
 
 [link to paper](https://arxiv.org/abs/1612.04402)
 

@@ -14,11 +14,15 @@ from starlette.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 from starlette.templating import Jinja2Templates
 
+
+## INITIALIZING SERVER
+
 templates = Jinja2Templates(directory='app/templates')
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
 
+## INITIALIZING UNET
 
 path = Path(__file__).parent #app/
 
@@ -45,6 +49,8 @@ tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
 loop.close()
 
+## DEFINING ROUTE FUNCTIONS
+
 @app.route('/')
 def index(request):
     index_html = path/'templates'/'index.html'
@@ -55,10 +61,18 @@ async def upload(request):
     data = await request.form()
     img_bytes = await (data["photo"].read())
     img = open_image(BytesIO(img_bytes))
+    ratio = img.shape[1]/img.shape[2]
     uploaded_name = 'app/static/user_imgs/uploaded/test.jpg'
     img.save(uploaded_name)
 
-    size = 450
+    h, w = int(500*ratio), int(500/ratio)
+    if h%2 != 0:
+        h -= 1
+    if w%2 != 0:
+        w -= 1
+
+    size = h, w
+    print(h,w)
     data_bunch = (ImageImageList.from_folder(path).split_none().label_from_func(lambda x: x)
           .transform(get_transforms(do_flip=False), size=size, tfm_y=True)
           .databunch(bs=1, no_check=True).normalize(imagenet_stats, do_y=True))
@@ -72,7 +86,8 @@ async def upload(request):
     return templates.TemplateResponse('index2.html', 
             {'request': request, 
              'uploaded_path': uploaded_name[4:], 
-             'computed_path' : computed_name[4:]})
+             'computed_path' : computed_name[4:],
+             'h': h, 'w': w})
 
 if __name__ == "__main__":
     if 'serve' in sys.argv:

@@ -65,7 +65,8 @@ async def upload(request):
     uploaded_name = 'app/static/user_imgs/uploaded/test.jpg'
     img.save(uploaded_name)
 
-    h, w = int(500*ratio), int(500/ratio)
+    resolution = 500
+    h, w = int(resolution*ratio), int(resolution/ratio)
     if h%2 != 0:
         h -= 1
     if w%2 != 0:

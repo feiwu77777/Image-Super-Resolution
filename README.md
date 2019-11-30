@@ -20,7 +20,6 @@
 <img src='https://user-images.githubusercontent.com/34350063/68476030-f2e17d00-0229-11ea-882e-87af720df30c.png' align="right" width=400>
 
 <br\>
-
 ## Getting started
 
 To run the application on a local computer, download or clone this repository.

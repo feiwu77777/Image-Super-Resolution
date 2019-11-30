@@ -14,12 +14,12 @@
 <img src='https://user-images.githubusercontent.com/34350063/68475823-73ec4480-0229-11ea-9f4e-d3cc309f139a.png' align="left" width=400>
 <img src='https://user-images.githubusercontent.com/34350063/68475991-da716280-0229-11ea-9eb4-d3a79d272dc2.png' align="right" width=400>
 
-<br><br><br>
+<br\>
 
 <img src='https://user-images.githubusercontent.com/34350063/68476009-e65d2480-0229-11ea-9ff0-0ab76477fc03.png' align="left" width=400>
 <img src='https://user-images.githubusercontent.com/34350063/68476030-f2e17d00-0229-11ea-882e-87af720df30c.png' align="right" width=400>
 
-<br><br><br>
+<br\>
 
 
 

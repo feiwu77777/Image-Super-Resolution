@@ -11,8 +11,8 @@
 ## Demonstration
 - The application deployed at [https://image-enhance-yqa7.onrender.com](https://image-enhance-yqa7.onrender.com)
 
-<img src='https://user-images.githubusercontent.com/34350063/68475823-73ec4480-0229-11ea-9f4e-d3cc309f139a.png' width=400>
-<img src='https://user-images.githubusercontent.com/34350063/68475991-da716280-0229-11ea-9eb4-d3a79d272dc2.png' width=400>
+<img src='https://user-images.githubusercontent.com/34350063/68475823-73ec4480-0229-11ea-9f4e-d3cc309f139a.png' align="left" width=400>
+<img src='https://user-images.githubusercontent.com/34350063/68475991-da716280-0229-11ea-9eb4-d3a79d272dc2.png' align="right" width=400>
 
 ![before1](https://user-images.githubusercontent.com/34350063/68475823-73ec4480-0229-11ea-9f4e-d3cc309f139a.png)
 - After

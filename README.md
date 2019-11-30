@@ -23,7 +23,7 @@
 
 To run the application on a local computer, download or clone this repository.
 ```bash
-cd Image-Super-Resolution
+cd Image-Super-Resolution-master
 pip install -r requirements 
 python app/server.py serve
 ```

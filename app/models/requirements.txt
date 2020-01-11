@@ -1,11 +1,1 @@
-gevent
-aiohttp
-asyncio
-uvicorn
-numpy
-h5py
-pillow
-protobuf==3.2.0
-torch
-torchvision
-fastai
+
